@@ -1,0 +1,47 @@
+>>API Documentation
+
+>> Project Name
+AIntern - AI Internship Resume Analyzer
+
+
+>> API 1
+GET /
+
+>> Description
+Fetches the home page of the application.
+
+>> Request
+GET /
+
+>> Response
+Fetches the main page.
+
+
+>> API 2
+ POST /upload
+
+<<>> Description
+Uploads the resume of the user, retrieves the text from the PDF, compares it with the internship dataset, and gives the top five internships.
+
+>> Request
+POST /upload
+Form Data
+
+ Field , Type   , Required 
+ resume, PDF   , Yes      
+
+>> Response
+
+Resume uploaded successfully
+ Resume text extracted
+ Top 5 internship recommendations
+ Match score of each internship
+
+
+
+> Status Codes
+
+ Code  --Meaning      
+ 200  --Success       
+ 400  --No file       
+ 500 -- Server Error  
