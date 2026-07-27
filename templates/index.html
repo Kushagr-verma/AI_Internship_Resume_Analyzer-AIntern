@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIntern — Find the internship that fits your resume</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Custom styles -->
+
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <span class="brand-mark">AI</span>
+        <span class="brand-text"><strong>AI</strong>ntern</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#upload">Upload resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-nav-cta" href="#upload">Get matched</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <span class="eyebrow">AI internship matching</span>
+          <h1 class="hero-title">
+            Your resume, <span class="text-gradient">read like a recruiter.</span><br>
+            Matched like an algorithm.
+          </h1>
+          <p class="hero-sub">
+            InternAI scans your resume, scores it against real internship listings, and shows you
+            exactly which skills stand between you and an offer &mdash; then builds the roadmap to close the gap.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#upload" class="btn btn-hero-primary">Upload your resume</a>
+            <a href="#how-it-works" class="btn btn-hero-secondary">See how matching works</a>
+          </div>
+          <div class="hero-stats d-flex flex-wrap gap-4 mt-5">
+            <div>
+              <span class="stat-number">40k+</span>
+              <span class="stat-label">resumes analyzed</span>
+            </div>
+            <div>
+              <span class="stat-number">2,300</span>
+              <span class="stat-label">partner internships</span>
+            </div>
+            <div>
+              <span class="stat-number">86%</span>
+              <span class="stat-label">match acceptance rate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- Signature visual: scanning resume + live match ring -->
+          <div class="scan-card">
+            <div class="scan-card-header">
+              <div class="file-chip">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15H6V2z" stroke="currentColor" stroke-width="1.6"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.6"/></svg>
+                priya_sharma_resume.pdf
+              </div>
+              <span class="badge-live">analyzing</span>
+            </div>
+
+            <div class="scan-body">
+              <div class="scan-lines">
+                <div class="line w-90"></div>
+                <div class="line w-70"></div>
+                <div class="line w-95"></div>
+                <div class="line w-60"></div>
+                <div class="line w-80"></div>
+                <div class="line w-50"></div>
+                <div class="scan-sweep"></div>
+              </div>
+
+              <div class="match-ring">
+                <svg viewBox="0 0 120 120" class="ring-svg">
+                  <circle cx="60" cy="60" r="52" class="ring-track"/>
+                  <circle cx="60" cy="60" r="52" class="ring-fill"/>
+                </svg>
+                <div class="ring-center">
+                  <span class="ring-value">92%</span>
+                  <span class="ring-caption">match</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="scan-footer">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill skill-pill-gap">Docker &middot; gap</span>
+              <span class="skill-pill">Data Viz</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <!-- ===== Upload Resume ===== -->
+<section id="upload" class="upload-section">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <!-- Upload form -->
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+
+                    <div class="upload-card">
+
+                        <div class="row g-0 align-items-stretch">
+
+                            <!-- Left Side -->
+                            <div class="col-md-7 p-4 p-md-5">
+
+                                <span class="eyebrow eyebrow-dark">
+                                    Step 1 · Upload Resume
+                                </span>
+
+                                <h2 class="upload-title">
+                                    Drop in your Resume
+                                </h2>
+
+                                <p class="upload-text">
+                                    Upload your resume in PDF or DOCX format.
+                                    Our system will analyze your skills, projects,
+                                    education and experience to recommend the
+                                    most suitable internships.
+                                </p>
+
+                                <!-- Upload Area -->
+                                <div class="dropzone">
+
+                                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" class="dropzone-icon">
+                                        <path d="M12 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                        <path d="M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"
+                                              stroke="currentColor"
+                                              stroke-width="1.8"
+                                              stroke-linecap="round"/>
+                                    </svg>
+
+                                    <p class="dropzone-title">
+                                        Drag & Drop your Resume
+                                    </p>
+
+                                    <p class="dropzone-sub">
+                                        or click below to browse files
+                                    </p>
+
+                                    <!-- Hidden File Picker -->
+                                    <label class="btn btn-upload mt-3">
+
+                                        Choose Resume
+
+                                        <input
+                                            type="file"
+                                            id="resume"
+                                            name="resume"
+                                            accept=".pdf,.doc,.docx"
+                                            hidden
+                                            required>
+
+                                    </label>
+
+                                    <br><br>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit"
+                                            class="btn btn-hero-primary">
+
+                                        Analyze Resume
+
+                                    </button>
+
+                                </div>
+
+                                <p class="upload-note">
+                                    Supported Files : PDF (.pdf), DOC (.doc), DOCX (.docx)
+                                </p>
+
+                            </div>
+
+                            <!-- Right Side -->
+                            <div class="col-md-5 upload-side d-none d-md-flex">
+
+                                <div>
+
+                                    <h6 class="side-heading">
+                                        What you'll receive
+                                    </h6>
+
+                                    <ul class="side-list">
+
+                                        <li>Resume Summary</li>
+
+                                        <li>Top Internship Matches</li>
+
+                                        <li>Skill Gap Analysis</li>
+
+                                        <li>Learning Roadmap</li>
+
+                                        <li>AI Career Suggestions</li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- ===== Features / How it works ===== -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="text-center mb-5" id="how-it-works">
+        <span class="eyebrow eyebrow-dark">How it works</span>
+        <h2 class="section-title">One resume in, four stages of clarity out</h2>
+        <p class="section-sub mx-auto">
+          Every upload moves through the same pipeline &mdash; in order &mdash;
+          so what you see is always built on the stage before it.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <span class="feature-index">01</span>
+            <div class="feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15H6V2z" stroke="currentColor" stroke-width="1.6"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.6"/><path d="M9 13h6M9 17h6M9 9h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <h5 class="feature-title">Resume Analysis</h5>
+            <p class="feature-text">We parse experience, projects and coursework into structured skills &mdash; no keyword-stuffing games, no guessing.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <span class="feature-index">02</span>
+            <div class="feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9.5l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h5 class="feature-title">Internship Matching</h5>
+            <p class="feature-text">Your profile is scored against live listings from partner companies, ranked by real fit &mdash; not just title keywords.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <span class="feature-index">03</span>
+            <div class="feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l3 6 6 1-4.5 4.5L17.5 21 12 17.5 6.5 21l1-6.5L3 10l6-1 3-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <h5 class="feature-title">Skill Gap Analysis</h5>
+            <p class="feature-text">For every match, we show precisely which skills you already have and which ones are missing before you apply.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <span class="feature-index">04</span>
+            <div class="feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19V6a2 2 0 012-2h11l3 3v12" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 19v-5h8v5" stroke="currentColor" stroke-width="1.6"/><path d="M8 8h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h5 class="feature-title">Learning Roadmap</h5>
+            <p class="feature-text">A short, ordered list of courses and projects mapped to your gaps &mdash; so effort goes where it moves the needle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA band ===== -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h3 class="cta-title">Ready to see your match score?</h3>
+          <p class="cta-text mb-0">It takes under a minute &mdash; and you'll see exactly what to work on next.</p>
+        </div>
+        <a href="#upload" class="btn btn-hero-primary btn-lg-cta">Upload your resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <a class="navbar-brand footer-brand" href="#">
+            <span class="brand-mark">AI</span>
+            <span class="brand-text"><strong>AI</strong>ntern</span>
+          </a>
+          <p class="footer-text">AI-powered resume analysis and internship matching, built to shorten the distance between students and the right first role.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Product</h6>
+          <ul class="footer-links">
+            <li><a href="#upload">Upload resume</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Company</h6>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Legal</h6>
+          <ul class="footer-links">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Follow</h6>
+          <ul class="footer-links">
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter / X</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-rule">
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+        <span class="footer-copy">&copy; 2026 AIntern. All rights reserved.</span>
+        <span class="footer-copy">Made for students, for real.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap bundle (navbar toggle only, no custom JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
